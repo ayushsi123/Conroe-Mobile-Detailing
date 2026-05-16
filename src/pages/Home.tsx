@@ -9,7 +9,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import SEO from '@/components/SEO';
-import { isMobile } from '@/lib/utils';
+import { isMobile, cn } from '@/lib/utils';
 
 const Home: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
