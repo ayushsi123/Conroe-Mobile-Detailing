@@ -31,9 +31,9 @@ const Home: React.FC = () => {
       gsap.from(".hero-title", {
         y: 100,
         opacity: 0,
-        duration: 1,
+        duration: 1.2,
         ease: "power4.out",
-        delay: 2.2 // Wait for preloader
+        delay: 0.5 
       });
 
       gsap.from(".hero-desc", {
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
         opacity: 0,
         duration: 1,
         ease: "power4.out",
-        delay: 2.4
+        delay: 0.8
       });
 
       gsap.from(".hero-btn", {
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
         opacity: 0,
         duration: 0.8,
         ease: "back.out(1.7)",
-        delay: 2.6
+        delay: 1
       });
 
       // Parallax Hero

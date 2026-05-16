@@ -126,33 +126,33 @@ const Booking: React.FC = () => {
               </p>
             </div>
 
-            <div className="glass-dark p-10 md:p-14 rounded-[4rem] shadow-premium border-white/5">
-              <form onSubmit={handleSubmit} className="space-y-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <div className="space-y-4">
-                    <Label htmlFor="name" className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Full Name</Label>
+            <div className="glass-dark p-6 sm:p-10 md:p-14 rounded-[2.5rem] sm:rounded-[4rem] shadow-premium border-white/5">
+              <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+                  <div className="space-y-3 sm:space-y-4">
+                    <Label htmlFor="name" className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Full Name</Label>
                     <div className="relative">
-                      <User className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={18} />
+                      <User className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={16} />
                       <Input 
                         id="name" 
                         placeholder="John Wick" 
                         required 
-                        className="rounded-2xl h-16 bg-white/5 border-white/10 text-white pl-12 focus:ring-blue-600 focus:border-blue-600 transition-all placeholder:text-slate-700"
+                        className="rounded-xl sm:rounded-2xl h-14 sm:h-16 bg-white/5 border-white/10 text-white pl-12 focus:ring-blue-600 focus:border-blue-600 transition-all placeholder:text-slate-700 text-sm sm:text-base"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                       />
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <Label htmlFor="email" className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Email Address</Label>
+                  <div className="space-y-3 sm:space-y-4">
+                    <Label htmlFor="email" className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Email Address</Label>
                     <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={18} />
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={16} />
                       <Input 
                         id="email" 
                         type="email" 
                         placeholder="john@detailing.com" 
                         required 
-                        className="rounded-2xl h-16 bg-white/5 border-white/10 text-white pl-12 focus:ring-blue-600 focus:border-blue-600 transition-all placeholder:text-slate-700"
+                        className="rounded-xl sm:rounded-2xl h-14 sm:h-16 bg-white/5 border-white/10 text-white pl-12 focus:ring-blue-600 focus:border-blue-600 transition-all placeholder:text-slate-700 text-sm sm:text-base"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                       />
@@ -160,29 +160,29 @@ const Booking: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <div className="space-y-4">
-                    <Label htmlFor="phone" className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Phone Number</Label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+                  <div className="space-y-3 sm:space-y-4">
+                    <Label htmlFor="phone" className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Phone Number</Label>
                     <div className="relative">
-                      <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={18} />
+                      <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={16} />
                       <Input 
                         id="phone" 
                         type="tel" 
                         placeholder="(936) 555-0123" 
                         required 
-                        className="rounded-2xl h-16 bg-white/5 border-white/10 text-white pl-12 focus:ring-blue-600 focus:border-blue-600 transition-all placeholder:text-slate-700"
+                        className="rounded-xl sm:rounded-2xl h-14 sm:h-16 bg-white/5 border-white/10 text-white pl-12 focus:ring-blue-600 focus:border-blue-600 transition-all placeholder:text-slate-700 text-sm sm:text-base"
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       />
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <Label htmlFor="service" className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Package Choice</Label>
+                  <div className="space-y-3 sm:space-y-4">
+                    <Label htmlFor="service" className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Package Choice</Label>
                     <div className="relative">
-                      <Info className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={18} />
+                      <Info className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={16} />
                       <select 
                         id="service"
-                        className="flex h-16 w-full items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-12 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all appearance-none"
+                        className="flex h-14 sm:h-16 w-full items-center justify-between rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 px-12 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all appearance-none"
                         required
                         value={formData.serviceId}
                         onChange={(e) => setFormData({...formData, serviceId: e.target.value})}
@@ -196,29 +196,29 @@ const Booking: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <div className="space-y-4">
-                    <Label htmlFor="date" className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Preferred Date</Label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+                  <div className="space-y-3 sm:space-y-4">
+                    <Label htmlFor="date" className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Preferred Date</Label>
                     <div className="relative">
-                      <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={18} />
+                      <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={16} />
                       <Input 
                         id="date" 
                         type="date" 
                         required 
-                        className="rounded-2xl h-16 bg-white/5 border-white/10 text-white pl-12 focus:ring-blue-600 focus:border-blue-600 transition-all color-white"
+                        className="rounded-xl sm:rounded-2xl h-14 sm:h-16 bg-white/5 border-white/10 text-white pl-12 focus:ring-blue-600 focus:border-blue-600 transition-all text-sm"
                         value={formData.date}
                         min={new Date().toISOString().split('T')[0]}
                         onChange={(e) => setFormData({...formData, date: e.target.value})}
                       />
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <Label htmlFor="time" className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Preferred Time</Label>
+                  <div className="space-y-3 sm:space-y-4">
+                    <Label htmlFor="time" className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Preferred Time</Label>
                     <div className="relative">
-                      <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={18} />
+                      <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500" size={16} />
                       <select 
                         id="time"
-                        className="flex h-16 w-full items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-12 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all appearance-none"
+                        className="flex h-14 sm:h-16 w-full items-center justify-between rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 px-12 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all appearance-none"
                         required
                         value={formData.time}
                         onChange={(e) => setFormData({...formData, time: e.target.value})}
@@ -231,12 +231,12 @@ const Booking: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <Label htmlFor="notes" className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Bespoke Instructions</Label>
+                <div className="space-y-3 sm:space-y-4">
+                  <Label htmlFor="notes" className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Bespoke Instructions</Label>
                   <Textarea 
                     id="notes" 
-                    placeholder="e.g. Vintage 1967 Mustang, handle with extreme care, driveway access available..." 
-                    className="rounded-2xl min-h-[160px] bg-white/5 border-white/10 text-white focus:ring-blue-600 focus:border-blue-600 placeholder:text-slate-700"
+                    placeholder="e.g. Vintage 1967 Mustang, handle with extreme care..." 
+                    className="rounded-xl sm:rounded-2xl min-h-[120px] sm:min-h-[160px] bg-white/5 border-white/10 text-white focus:ring-blue-600 focus:border-blue-600 placeholder:text-slate-700 text-sm sm:text-base"
                     value={formData.notes}
                     onChange={(e) => setFormData({...formData, notes: e.target.value})}
                   />
@@ -245,7 +245,7 @@ const Booking: React.FC = () => {
                 <Button 
                   type="submit" 
                   disabled={loading}
-                  className="w-full rounded-2xl h-20 text-xl font-black uppercase tracking-widest bg-blue-600 hover:bg-blue-700 shadow-glow transition-all duration-500"
+                  className="w-full rounded-xl sm:rounded-2xl h-16 sm:h-20 text-lg sm:text-xl font-black uppercase tracking-widest bg-blue-600 hover:bg-blue-700 shadow-glow transition-all duration-500"
                 >
                   {loading ? <><Loader2 className="animate-spin mr-3" /> Securing Slot...</> : "Confirm Reservation"}
                 </Button>
