@@ -81,18 +81,7 @@ const Home: React.FC = () => {
         });
       });
 
-      // Stats Animation
-      gsap.from(".stat-item", {
-        scrollTrigger: {
-          trigger: ".stats-section",
-          start: "top 75%",
-        },
-        scale: 0.5,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "back.out(1.7)"
-      });
+      // Stats Animation - Removed as elements are not in DOM
     }, containerRef);
 
     return () => ctx.revert();
@@ -181,7 +170,7 @@ const Home: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 3, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center space-y-4"
         >
           <span className="text-[10px] uppercase tracking-[0.4em] text-slate-500 font-bold">Explore</span>
           <div className="w-px h-16 bg-gradient-to-b from-blue-600 to-transparent" />
