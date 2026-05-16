@@ -1,0 +1,8 @@
+{
+  "name": "Conroe Mobile Detailing",
+  "description": "Premium mobile hand car wash and high-end detailing services in Conroe, TX. Professional care for your vehicle, delivered to your doorstep.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

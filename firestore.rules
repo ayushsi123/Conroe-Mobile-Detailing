@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Bookings collection
+    match /bookings/{bookingId} {
+      allow create: if (
+        incoming().customerName is string && incoming().customerName.size() <= 100 &&
+        incoming().customerEmail is string && incoming().customerEmail.size() <= 100 &&
+        incoming().customerPhone is string && incoming().customerPhone.size() <= 20 &&
+        incoming().serviceId is string &&
+        incoming().status == 'pending' &&
+        incoming().createdAt == request.time
+      );
+      
+      // Only staff/admin can read, list, update or delete
+      allow read, list, update, delete: if isSignedIn();
+    }
+  }
+}
