@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { CheckCircle2, Info, ArrowRight, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
+import { isMobile, cn } from '@/lib/utils';
 
 const services = [
   {
@@ -73,20 +74,30 @@ const Services: React.FC = () => {
         title="Our Services" 
         description="Explore our elite detailing packages. From ceramic coating to master paint correction, we provide bespoke care for Conroe's finest collections."
       />
-      {/* Decorative Background */}
+      {/* Decorative Background - Optimized */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/10 rounded-full blur-[120px]" />
+        <div className={cn(
+          "absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/5 rounded-full",
+          !isMobile && "blur-[120px]"
+        )} />
+        <div className={cn(
+          "absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/5 rounded-full",
+          !isMobile && "blur-[120px]"
+        )} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-24">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={isMobile ? { opacity: 0 } : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center space-x-3 glass-dark px-5 py-2.5 rounded-full mb-8"
+            transition={{ duration: isMobile ? 0.3 : 0.6 }}
+            className={cn(
+              "inline-flex items-center space-x-3 px-5 py-2.5 rounded-full mb-8 transform-gpu",
+              isMobile ? "bg-slate-900 border border-white/10" : "glass-dark"
+            )}
           >
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-ping" />
+            <div className={cn("w-2 h-2 bg-blue-500 rounded-full", !isMobile && "animate-ping")} />
             <span className="text-blue-400 font-bold tracking-[0.3em] text-[10px] sm:text-xs uppercase">Our Curated Packages</span>
           </motion.div>
           <motion.h1 
@@ -112,12 +123,16 @@ const Services: React.FC = () => {
           {services.map((service, idx) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={isMobile ? { opacity: 0 } : { opacity: 0, y: 30 }}
+              whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.8 }}
+              transition={{ delay: isMobile ? 0 : idx * 0.1, duration: isMobile ? 0.3 : 0.8 }}
+              className="transform-gpu"
             >
-              <Card className={`h-full flex flex-col glass-dark border-none shadow-premium hover:shadow-glow transition-all duration-700 relative overflow-hidden group hover:-translate-y-4`}>
+              <Card className={cn(
+                "h-full flex flex-col border-none shadow-premium transition-all duration-700 relative overflow-hidden group transform-gpu",
+                isMobile ? "bg-slate-900" : "glass-dark hover:shadow-glow hover:-translate-y-4"
+              )}>
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 {service.hot && (
@@ -169,10 +184,14 @@ const Services: React.FC = () => {
 
         {/* Extra Info - High End Banner */}
         <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={isMobile ? { opacity: 0 } : { opacity: 0, y: 40 }}
+          whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-32 p-16 glass rounded-[4rem] text-white flex flex-col lg:flex-row items-center justify-between border-white/10 shadow-premium overflow-hidden relative"
+          transition={{ duration: isMobile ? 0.3 : 0.8 }}
+          className={cn(
+            "mt-32 p-16 rounded-[4rem] text-white flex flex-col lg:flex-row items-center justify-between border-white/10 shadow-premium overflow-hidden relative transform-gpu",
+            isMobile ? "bg-slate-900 border" : "glass"
+          )}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-transparent" />
           <div className="max-w-2xl mb-12 lg:mb-0 relative z-10">

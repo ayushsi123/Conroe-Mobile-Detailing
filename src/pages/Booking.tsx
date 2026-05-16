@@ -10,6 +10,7 @@ import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { CheckCircle2, Loader2, Calendar, Phone, Mail, User, Info, Clock, Sparkles } from 'lucide-react';
 import SEO from '@/components/SEO';
+import { isMobile, cn } from '@/lib/utils';
 
 const services = [
   { id: 'eco-wash', name: 'Eco Exterior Wash ($45)', price: 45 },
@@ -66,12 +67,19 @@ const Booking: React.FC = () => {
   if (submitted) {
     return (
       <div className="pt-40 pb-20 px-4 flex items-center justify-center min-h-screen bg-slate-950 bg-noise relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px]" />
+        <div className={cn(
+          "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full",
+          !isMobile && "blur-[120px]"
+        )} />
         
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          initial={isMobile ? { opacity: 0 } : { opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="max-w-md w-full glass p-12 rounded-[3rem] shadow-premium text-center relative z-10 border-white/10"
+          transition={{ duration: isMobile ? 0.3 : 0.6 }}
+          className={cn(
+            "max-w-md w-full p-12 rounded-[3rem] shadow-premium text-center relative z-10 border-white/10 transform-gpu",
+            isMobile ? "bg-slate-900" : "glass"
+          )}
         >
           <div className="w-24 h-24 bg-blue-500/10 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-10 shadow-glow">
             <CheckCircle2 size={48} />
@@ -95,25 +103,35 @@ const Booking: React.FC = () => {
         title="Reserve Your Session" 
         description="Book your premium detailing experience. Secure your slot for Conroe's finest automotive care."
       />
-      {/* Decorative Orbs */}
-      <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Decorative Orbs - Optimized */}
+      <div className={cn(
+        "absolute top-0 right-0 w-[40%] h-[40%] bg-blue-600/5 rounded-full pointer-events-none",
+        !isMobile && "blur-[120px]"
+      )} />
+      <div className={cn(
+        "absolute bottom-0 left-0 w-[40%] h-[40%] bg-indigo-600/5 rounded-full pointer-events-none",
+        !isMobile && "blur-[120px]"
+      )} />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
           
           {/* Form Side */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
+            initial={isMobile ? { opacity: 0 } : { opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7"
+            transition={{ duration: isMobile ? 0.4 : 0.8 }}
+            className="lg:col-span-7 transform-gpu"
           >
             <div className="mb-14">
               <motion.div 
-                initial={{ opacity: 0, y: 10 }}
+                initial={isMobile ? { opacity: 0 } : { opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center space-x-3 glass-dark px-5 py-2.5 rounded-full mb-8"
+                transition={{ delay: isMobile ? 0.2 : 0.4 }}
+                className={cn(
+                  "inline-flex items-center space-x-3 px-5 py-2.5 rounded-full mb-8 transform-gpu",
+                  isMobile ? "bg-slate-900 border border-white/10" : "glass-dark"
+                )}
               >
                 <Sparkles size={14} className="text-blue-400" />
                 <span className="text-blue-400 font-bold tracking-[0.3em] text-[10px] sm:text-xs uppercase">Elite Reservation</span>
@@ -255,12 +273,15 @@ const Booking: React.FC = () => {
 
           {/* Info Side */}
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
+            initial={isMobile ? { opacity: 0 } : { opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-5 lg:sticky lg:top-40 space-y-10"
+            transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0 : 0.2 }}
+            className="lg:col-span-5 lg:sticky lg:top-40 space-y-10 transform-gpu"
           >
-            <div className="glass p-12 rounded-[4rem] border-white/10 shadow-premium">
+            <div className={cn(
+              "p-12 rounded-[4rem] border-white/10 shadow-premium",
+              isMobile ? "bg-slate-900" : "glass"
+            )}>
               <h3 className="text-3xl font-black mb-10 tracking-tighter uppercase text-white">The Protocol</h3>
               <div className="space-y-10">
                 {[

@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Car, Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { isMobile, cn } from '@/lib/utils';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-950 bg-noise text-slate-400 pt-32 pb-16 relative overflow-hidden">
-      {/* Decorative Blur */}
-      <div className="absolute bottom-0 right-0 w-[30%] h-[30%] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* Decorative Blur - Optimized */}
+      <div className={cn(
+        "absolute bottom-0 right-0 w-[30%] h-[30%] bg-blue-600/5 rounded-full pointer-events-none",
+        !isMobile && "blur-[100px]"
+      )} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">

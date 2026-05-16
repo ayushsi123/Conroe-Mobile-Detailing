@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Car, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { isMobile, cn } from '@/lib/utils';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,11 +26,12 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
-          ? 'bg-slate-950/80 backdrop-blur-xl py-4 shadow-2xl border-b border-white/5'
-          : 'bg-transparent py-8'
-      }`}
+          ? cn("py-4 shadow-2xl border-b border-white/5", isMobile ? "bg-slate-950" : "bg-slate-950/80 backdrop-blur-xl")
+          : "bg-transparent py-8"
+      )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
@@ -39,9 +41,9 @@ const Navbar: React.FC = () => {
                 <img src="/logo.png" alt="Conroe Detailing Logo" className="w-full h-full object-contain p-2" />
               </div>
               <motion.div 
-                animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+                animate={isMobile ? {} : { scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
                 transition={{ repeat: Infinity, duration: 3 }}
-                className="absolute -top-3 -right-3 text-blue-400"
+                className="absolute -top-3 -right-3 text-blue-400 transform-gpu"
               >
                 <Sparkles size={24} fill="currentColor" />
               </motion.div>
@@ -77,13 +79,14 @@ const Navbar: React.FC = () => {
           <div className="md:hidden">
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-3 rounded-full transition-all duration-500 shadow-premium ${
+              className={cn(
+                "p-3 rounded-full transition-all duration-500 shadow-premium",
                 isOpen 
-                  ? 'bg-white text-slate-950 fixed right-4 top-6 z-[10001] rotate-90' 
+                  ? "bg-white text-slate-950 fixed right-4 top-6 z-[10001] rotate-90" 
                   : isScrolled 
-                    ? 'bg-blue-600 text-white shadow-blue-500/30' 
-                    : 'bg-white/10 backdrop-blur-xl border border-white/20 text-white'
-              }`}
+                    ? "bg-blue-600 text-white shadow-blue-500/30" 
+                    : cn("border border-white/20 text-white", isMobile ? "bg-slate-900" : "bg-white/10 backdrop-blur-xl")
+              )}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -100,14 +103,17 @@ const Navbar: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-slate-950/90 backdrop-blur-xl z-[9999] md:hidden"
+              className={cn(
+                "fixed inset-0 z-[9999] md:hidden",
+                isMobile ? "bg-slate-950" : "bg-slate-950/90 backdrop-blur-xl"
+              )}
             />
             <motion.div 
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 w-full sm:w-[85%] max-w-sm bg-slate-950 bg-noise z-[10000] p-12 pt-40 md:hidden flex flex-col shadow-3xl border-l border-white/5"
+              transition={isMobile ? { duration: 0.3 } : { type: 'spring', damping: 30, stiffness: 300 }}
+              className="fixed top-0 right-0 bottom-0 w-full sm:w-[85%] max-w-sm bg-slate-950 bg-noise z-[10000] p-12 pt-40 md:hidden flex flex-col shadow-3xl border-l border-white/5 transform-gpu"
             >
               <div className="flex flex-col space-y-10">
                 {navLinks.map((link, idx) => (

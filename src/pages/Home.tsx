@@ -9,6 +9,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import SEO from '@/components/SEO';
+import { isMobile } from '@/lib/utils';
 
 const Home: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -103,20 +104,26 @@ const Home: React.FC = () => {
         title="Home" 
         description="Experience the pinnacle of automotive care in Conroe, TX. Award-winning mobile detailing, ceramic coating, and paint correction."
       />
-      {/* Decorative Orbs */}
+      {/* Decorative Orbs - Optimized for Mobile */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] bg-indigo-600/10 rounded-full blur-[100px]" />
+        <div className={cn(
+          "absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full",
+          isMobile ? "opacity-20" : "blur-[120px] opacity-20 animate-pulse"
+        )} />
+        <div className={cn(
+          "absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] bg-indigo-600/5 rounded-full",
+          isMobile ? "opacity-10" : "blur-[100px] opacity-10"
+        )} />
       </div>
 
       {/* Hero Section */}
       <section className="hero-section relative h-[100svh] min-h-[700px] flex items-center pt-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <motion.div 
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="w-full h-full"
+            initial={isMobile ? false : { scale: 1.1 }}
+            animate={isMobile ? { scale: 1 } : { scale: 1 }}
+            transition={{ duration: isMobile ? 0.3 : 1.5, ease: "easeOut" }}
+            className="w-full h-full transform-gpu will-change-transform"
           >
             <img 
               src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&q=75&w=1600" 
@@ -133,12 +140,15 @@ const Home: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-4xl mx-auto md:mx-0 text-center md:text-left">
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+              initial={isMobile ? { opacity: 0 } : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.2, duration: 0.8 }}
-              className="inline-flex items-center space-x-3 glass-dark px-5 py-2.5 rounded-full mb-10"
+              transition={{ delay: isMobile ? 0.5 : 2.2, duration: isMobile ? 0.3 : 0.8 }}
+              className={cn(
+                "inline-flex items-center space-x-3 px-5 py-2.5 rounded-full mb-10 transform-gpu",
+                isMobile ? "bg-slate-900 border border-white/10" : "glass-dark"
+              )}
             >
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-ping" />
+              <div className={cn("w-2 h-2 bg-blue-500 rounded-full", !isMobile && "animate-ping")} />
               <span className="text-blue-400 font-bold tracking-[0.2em] text-[10px] sm:text-xs uppercase">Conroe's Premier Detailing Studio</span>
             </motion.div>
             
@@ -150,13 +160,16 @@ const Home: React.FC = () => {
               We don't just wash cars; we curate experiences. Elevating every surface through meticulous craftsmanship and scientific precision.
             </p>
             
-            <div className="hero-btn flex flex-col sm:flex-row justify-center md:justify-start gap-6">
-              <Button asChild size="lg" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white px-12 h-20 text-xl font-bold shadow-glow group transition-all duration-500 hover:scale-105">
+            <div className="hero-btn flex flex-col sm:flex-row justify-center md:justify-start gap-6 transform-gpu">
+              <Button asChild size="lg" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white px-12 h-20 text-xl font-bold shadow-glow group transition-all duration-500 hover:scale-105 will-change-transform transform-gpu">
                 <Link to="/book" className="flex items-center">
-                  Start Your Transformation <motion.span animate={{ x: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }} className="ml-3">→</motion.span>
+                  Start Your Transformation <motion.span animate={isMobile ? {} : { x: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }} className="ml-3">→</motion.span>
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full border-white/10 text-white hover:bg-white/5 px-12 h-20 text-xl font-bold backdrop-blur-md transition-all duration-500 hover:border-white/30">
+              <Button asChild variant="outline" size="lg" className={cn(
+                "rounded-full border-white/10 text-white px-12 h-20 text-xl font-bold transition-all duration-500 hover:border-white/30 transform-gpu",
+                isMobile ? "bg-white/5" : "hover:bg-white/5 backdrop-blur-md"
+              )}>
                 <Link to="/services">Discover Services</Link>
               </Button>
             </div>
@@ -220,7 +233,10 @@ const Home: React.FC = () => {
                   desc: "The highest-rated detailing service in the region, trusted by the local enthusiast community."
                 }
               ].map((item, idx) => (
-                <div key={idx} className="scroll-reveal glass-dark p-12 lg:p-16 rounded-[4rem] hover:bg-slate-900/90 transition-all duration-700 hover:-translate-y-4 group border border-white/10 hover:border-blue-500/40 shadow-premium">
+                <div key={idx} className={cn(
+                  "scroll-reveal p-12 lg:p-16 rounded-[4rem] transition-all duration-700 group border border-white/10 shadow-premium transform-gpu will-change-transform",
+                  isMobile ? "bg-slate-900" : "glass-dark hover:bg-slate-900/90 hover:-translate-y-4 hover:border-blue-500/40"
+                )}>
                   <div className="mb-12 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700 text-blue-500 drop-shadow-[0_0_15px_rgba(37,99,235,0.3)]">{item.icon}</div>
                   <h3 className="text-3xl md:text-4xl font-black mb-6 text-white tracking-tight uppercase">{item.title}</h3>
                   <p className="text-slate-400 leading-relaxed text-lg font-medium">{item.desc}</p>
@@ -339,7 +355,10 @@ const Home: React.FC = () => {
 
       {/* CTA Section - Ultra Premium */}
       <section className="py-24 sm:py-40 px-4 relative">
-        <div className="max-w-6xl mx-auto glass rounded-[4rem] p-16 md:p-32 text-center relative overflow-hidden shadow-premium">
+        <div className={cn(
+          "max-w-6xl mx-auto rounded-[4rem] p-16 md:p-32 text-center relative overflow-hidden shadow-premium transform-gpu",
+          isMobile ? "bg-slate-900 border border-white/10" : "glass"
+        )}>
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-indigo-600/10" />
           
           <div className="relative z-10">

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from '@/lib/gsap';
 import { Car, Sparkles } from 'lucide-react';
+import { isMobile, cn } from '@/lib/utils';
 
 export const Preloader: React.FC = () => {
   const preloaderRef = useRef<HTMLDivElement>(null);
@@ -36,7 +37,7 @@ export const Preloader: React.FC = () => {
     .to(textRef.current, {
       opacity: 0,
       scale: 0.95,
-      filter: "blur(10px)",
+      filter: isMobile ? "none" : "blur(10px)",
       duration: 0.4,
       delay: 0.3,
       ease: "power2.in"
@@ -59,7 +60,10 @@ export const Preloader: React.FC = () => {
       className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950 w-screen h-screen overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
+        <div className={cn(
+          "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/5 rounded-full",
+          !isMobile && "blur-[120px]"
+        )} />
       </div>
 
       <div 
