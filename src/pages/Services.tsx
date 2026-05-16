@@ -68,7 +68,7 @@ const services = [
 
 const Services: React.FC = () => {
   return (
-    <div className="pt-40 pb-32 bg-slate-950 bg-noise min-h-screen relative overflow-hidden">
+    <div className="pt-32 sm:pt-40 pb-20 sm:pb-32 bg-slate-950 bg-noise min-h-screen relative overflow-hidden">
       <SEO 
         title="Our Services" 
         description="Explore our elite detailing packages. From ceramic coating to master paint correction, we provide bespoke care for Conroe's finest collections."

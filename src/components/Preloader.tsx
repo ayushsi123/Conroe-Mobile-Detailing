@@ -22,20 +22,20 @@ export const Preloader: React.FC = () => {
     tl.to(textRef.current, {
       opacity: 1,
       y: 0,
-      duration: 0.8,
+      duration: 0.6,
       ease: "expo.out"
     })
     .to(textRef.current, {
       opacity: 0,
       scale: 0.95,
       filter: "blur(10px)",
-      duration: 0.5,
-      delay: 0.6,
+      duration: 0.4,
+      delay: 0.3,
       ease: "power2.in"
     })
     .to(preloaderRef.current, {
       yPercent: -100,
-      duration: 0.8,
+      duration: 0.7,
       ease: "expo.inOut"
     }, "-=0.1");
 

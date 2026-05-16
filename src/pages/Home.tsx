@@ -33,7 +33,7 @@ const Home: React.FC = () => {
         opacity: 0,
         duration: 1.2,
         ease: "power4.out",
-        delay: 0.5 
+        delay: 1.6 
       });
 
       gsap.from(".hero-desc", {
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
         opacity: 0,
         duration: 1,
         ease: "power4.out",
-        delay: 0.8
+        delay: 1.9
       });
 
       gsap.from(".hero-btn", {
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
         opacity: 0,
         duration: 0.8,
         ease: "back.out(1.7)",
-        delay: 1
+        delay: 2.1
       });
 
       // Parallax Hero
@@ -174,7 +174,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Features - Asymmetric Editorial Layout */}
-      <section className="py-32 relative bg-slate-950">
+      <section className="py-20 sm:py-32 relative bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-20 lg:gap-32 items-start">
             <div className="space-y-12 sticky top-32">
@@ -230,7 +230,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Projects Gallery */}
-      <section className="py-32 bg-slate-900/30">
+      <section className="py-20 sm:py-32 bg-slate-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 text-center">
           <h2 className="scroll-reveal text-6xl md:text-9xl font-black tracking-tighter text-white/5 absolute left-1/2 -translate-x-1/2 top-[-10%] select-none">PORTFOLIO</h2>
           <h2 className="scroll-reveal text-5xl md:text-7xl font-bold tracking-tighter text-white mb-6">
@@ -271,7 +271,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Services Preview - Luxury Cards */}
-      <section className="py-32 relative">
+      <section className="py-20 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
             <h2 className="scroll-reveal text-5xl md:text-8xl font-bold tracking-tighter text-white mb-8">
@@ -336,7 +336,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* CTA Section - Ultra Premium */}
-      <section className="py-40 px-4 relative">
+      <section className="py-24 sm:py-40 px-4 relative">
         <div className="max-w-6xl mx-auto glass rounded-[4rem] p-16 md:p-32 text-center relative overflow-hidden shadow-premium">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-indigo-600/10" />
           

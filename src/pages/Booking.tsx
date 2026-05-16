@@ -90,7 +90,7 @@ const Booking: React.FC = () => {
   }
 
   return (
-    <div className="pt-40 pb-32 px-4 bg-slate-950 bg-noise min-h-screen relative overflow-hidden">
+    <div className="pt-32 sm:pt-40 pb-20 sm:pb-32 px-4 bg-slate-950 bg-noise min-h-screen relative overflow-hidden">
       <SEO 
         title="Reserve Your Session" 
         description="Book your premium detailing experience. Secure your slot for Conroe's finest automotive care."
@@ -293,14 +293,14 @@ const Booking: React.FC = () => {
               </div>
             </div>
 
-            <div className="relative group overflow-hidden rounded-[4rem] h-80 shadow-premium border border-white/10">
+            <div className="relative group overflow-hidden rounded-[2.5rem] sm:rounded-[4rem] h-64 sm:h-80 shadow-premium border border-white/10 bg-slate-900">
               <img 
-                src="https://images.unsplash.com/photo-1601362840469-51e4d8d59085?auto=format&fit=crop&q=70&w=600" 
-                alt="Detailing action" 
+                src="https://images.unsplash.com/photo-1599256621730-535171e28e50?auto=format&fit=crop&q=80&w=1000" 
+                alt="Professional Detailing" 
                 className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-transform duration-1000" 
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex items-end p-10">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-8 sm:p-10">
                 <div>
                   <div className="text-blue-500 font-black tracking-[0.3em] text-[10px] uppercase mb-3">Legacy of Excellence</div>
                   <div className="text-2xl font-black text-white tracking-tighter uppercase leading-tight">100% Satisfaction or a <br /> Full Restitution.</div>

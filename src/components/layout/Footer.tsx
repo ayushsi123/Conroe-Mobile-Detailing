@@ -4,7 +4,7 @@ import { Car, Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 text-slate-400 pt-32 pb-16 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-slate-950 bg-noise text-slate-400 pt-32 pb-16 relative overflow-hidden">
       {/* Decorative Blur */}
       <div className="absolute bottom-0 right-0 w-[30%] h-[30%] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
 
