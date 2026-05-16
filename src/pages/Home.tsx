@@ -119,7 +119,7 @@ const Home: React.FC = () => {
             className="w-full h-full"
           >
             <img 
-              src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&q=80&w=2000" 
+              src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&q=75&w=1600" 
               alt="Clean car dashboard" 
               className="hero-img w-full h-full object-cover opacity-40"
               referrerPolicy="no-referrer"
@@ -244,12 +244,12 @@ const Home: React.FC = () => {
         <div className="embla overflow-hidden" ref={emblaRef}>
           <div className="embla__container flex">
             {[
-              "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1200",
-              "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200",
-              "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=1200",
-              "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200",
-              "https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&q=80&w=1200",
-              "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=1200"
+              "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=70&w=1000",
+              "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=70&w=1000",
+              "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=70&w=1000",
+              "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=70&w=1000",
+              "https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&q=70&w=1000",
+              "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=70&w=1000"
             ].map((img, idx) => (
               <div key={idx} className="embla__slide flex-[0_0_90%] sm:flex-[0_0_60%] lg:flex-[0_0_45%] min-w-0 pr-8">
                 <div className="relative aspect-[16/10] rounded-[3rem] overflow-hidden group shadow-2xl border border-white/5">
@@ -287,20 +287,20 @@ const Home: React.FC = () => {
               {
                 name: "The Essential",
                 price: "$150",
-                img: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=800",
+                img: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=70&w=600",
                 features: ["Paint Decontamination", "Deep Wheel Clean", "Leather Enrichment"]
               },
               {
                 name: "The Signature",
                 price: "$350",
-                img: "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&q=80&w=800",
+                img: "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&q=70&w=600",
                 features: ["Clay Bar Mastery", "1-Step Paint Enhancement", "Engine Bay Aesthetic"],
                 popular: true
               },
               {
                 name: "The Bespoke",
                 price: "$850+",
-                img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800",
+                img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=70&w=600",
                 features: ["Ceramic Pro Coating", "Paint Correction Level 2", "Interior Nano-Shield"]
               }
             ].map((pkg, idx) => (

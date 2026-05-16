@@ -295,7 +295,7 @@ const Booking: React.FC = () => {
 
             <div className="relative group overflow-hidden rounded-[4rem] h-80 shadow-premium border border-white/10">
               <img 
-                src="https://images.unsplash.com/photo-1601362840469-51e4d8d59085?auto=format&fit=crop&q=80&w=800" 
+                src="https://images.unsplash.com/photo-1601362840469-51e4d8d59085?auto=format&fit=crop&q=70&w=600" 
                 alt="Detailing action" 
                 className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-transform duration-1000" 
                 referrerPolicy="no-referrer"
