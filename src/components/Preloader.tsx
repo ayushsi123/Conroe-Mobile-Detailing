@@ -13,11 +13,19 @@ export const Preloader: React.FC = () => {
     const tl = gsap.timeline({
       onComplete: () => {
         if (preloaderRef.current) {
-          preloaderRef.current.style.visibility = 'hidden';
+          preloaderRef.current.style.display = 'none';
           document.body.style.overflow = 'auto';
         }
       }
     });
+
+    // Safety timeout to ensure preloader always clears
+    const safetyTimeout = setTimeout(() => {
+      if (preloaderRef.current && preloaderRef.current.style.display !== 'none') {
+        preloaderRef.current.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }, 5000);
 
     tl.to(textRef.current, {
       opacity: 1,
@@ -40,6 +48,7 @@ export const Preloader: React.FC = () => {
     }, "-=0.1");
 
     return () => {
+      clearTimeout(safetyTimeout);
       document.body.style.overflow = 'auto';
     };
   }, []);

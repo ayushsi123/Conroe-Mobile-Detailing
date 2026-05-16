@@ -70,8 +70,8 @@ const Home: React.FC = () => {
         gsap.from(el, {
           scrollTrigger: {
             trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none reverse"
+            start: "top 90%",
+            once: true
           },
           y: 30,
           opacity: 0,
@@ -123,6 +123,8 @@ const Home: React.FC = () => {
               alt="Clean car dashboard" 
               className="hero-img w-full h-full object-cover opacity-40"
               referrerPolicy="no-referrer"
+              loading="eager"
+              decoding="async"
             />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-slate-950/80 to-slate-950" />
